@@ -1,0 +1,28 @@
+inherit cmake
+
+NAME="uchardet"
+VERSION=0.0.6
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Universal Charset Detector library"
+DESCRIPTION=
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/uchardet/"
+SRC_URI="https://www.freedesktop.org/software/uchardet/releases/uchardet-${VERSION}.tar.xz"
+PATCH_URI="0.0.6-cygwin-install.patch"
+
+PKG_NAMES="uchardet libuchardet0 libuchardet-devel"
+uchardet_CATEGORY="Text"
+uchardet_SUMMARY=${SUMMARY/library/tool}
+uchardet_CONTENTS="
+	usr/bin/uchardet.exe
+	usr/share/doc/${NAME}
+	usr/share/man/man1/uchardet.1*
+"
+libuchardet0_CONTENTS="usr/bin/cyguchardet-0.dll"
+libuchardet_devel_CONTENTS="
+	usr/include/uchardet/
+	usr/lib/libuchardet.dll.a
+	usr/lib/pkgconfig/uchardet.pc
+"
+
+CYGCMAKE_ARGS="-DBUILD_STATIC=OFF"

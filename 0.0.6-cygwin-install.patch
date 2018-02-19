@@ -1,0 +1,29 @@
+--- origsrc/uchardet-0.0.6/src/CMakeLists.txt	2016-07-19 18:47:50.000000000 -0500
++++ src/uchardet-0.0.6/src/CMakeLists.txt	2018-02-15 13:15:33.565574300 -0600
+@@ -97,7 +97,7 @@ if (UCHARDET_STATIC_LIBRARY)
+ 	)
+ endif (UCHARDET_STATIC_LIBRARY)
+ 
+-if (NOT WIN32)
++if (NOT WIN32 AND NOT CYGWIN)
+ 	install(
+ 		TARGETS
+ 			${UCHARDET_LIBRARY}
+@@ -106,7 +106,7 @@ if (NOT WIN32)
+ 		ARCHIVE DESTINATION
+ 			${CMAKE_INSTALL_LIBDIR}
+ 	)
+-else (NOT WIN32)
++else (NOT WIN32 AND NOT CYGWIN)
+ 	install(
+ 		TARGETS
+ 			${UCHARDET_LIBRARY}
+@@ -115,7 +115,7 @@ else (NOT WIN32)
+ 		ARCHIVE DESTINATION
+ 			${CMAKE_INSTALL_LIBDIR}
+ 	)
+-endif (NOT WIN32)
++endif (NOT WIN32 AND NOT CYGWIN)
+ 
+ if (UCHARDET_STATIC_LIBRARY)
+ 	install(
